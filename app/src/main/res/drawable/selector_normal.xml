@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="250" android:exitFadeDuration="250">
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="12dp" />
+            <solid android:angle="0" android:color="@color/deepblue" />
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <corners android:radius="12dp" />
+            <solid android:angle="0" android:color="@color/black" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape>
+            <corners android:radius="12dp" />
+            <solid android:angle="0" android:color="@color/skyblue" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <corners android:radius="12dp" />
+            <solid android:angle="0" android:color="@color/black" />
+        </shape>
+    </item>
+</selector>

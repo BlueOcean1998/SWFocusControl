@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "net.sunniwell.app.focuscontrol"
+        minSdk 16
+        targetSdk 31
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    def keyStore = new KeyStore()
+    signingConfigs {
+        config {
+            storeFile keyStore.storeFile
+            storePassword keyStore.storePassword
+            keyAlias keyStore.keyAlias
+            keyPassword keyStore.keyPassword
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            if (keyStore.checkKeyStore()) {
+                signingConfig signingConfigs.config
+            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (keyStore.checkKeyStore()) {
+                signingConfig signingConfigs.config
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    applicationVariants.all {
+        it.outputs.all {
+            outputFileName = "${rootProject.name}_${project.name}-v${defaultConfig.versionName}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.activity:activity-ktx:1.2.3'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.fragment:fragment-ktx:1.3.6'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation project(path: ':focuscontrol')
+}
+
+class KeyStore {
+    def storeFile
+    def storePassword
+    def keyAlias
+    def keyPassword
+
+    KeyStore() {
+        def localFile = new File('local.properties')
+        if (localFile.exists()) {
+            def properties = new Properties()
+            def inputStream = localFile.newDataInputStream()
+            properties.load(inputStream)
+            def keystorePath = properties.getProperty('keyStore.storeFile')
+            if (keystorePath) {
+                storeFile = new File(keystorePath)
+            }
+            storePassword = properties.getProperty('keyStore.storePassword')
+            keyAlias = properties.getProperty('keyStore.keyAlias')
+            keyPassword = properties.getProperty('keyStore.keyPassword')
+        }
+    }
+
+    boolean checkKeyStore() {
+        return storeFile && storeFile.exists() && storePassword && keyAlias && keyPassword
+    }
+}

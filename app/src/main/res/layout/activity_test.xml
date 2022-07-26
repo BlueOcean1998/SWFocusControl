@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.sunniwell.aar.focuscontrol.layout.FocusControlScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:scrollbars="none">
+
+    <net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_to_test_activity_1"
+            style="@style/btn_normal"
+            android:text="@string/btn_to_test_activity_1">
+
+            <requestFocus />
+        </Button>
+
+        <Button
+            android:id="@+id/btn_to_test_activity_1_java"
+            style="@style/btn_normal"
+            android:text="@string/btn_to_test_activity_1_java" />
+
+        <Button
+            android:id="@+id/btn_to_test_activity_1_fragment"
+            style="@style/btn_normal"
+            android:text="@string/btn_to_test_activity_1_fragment" />
+
+        <Button
+            android:id="@+id/btn_to_test_activity_2"
+            style="@style/btn_normal"
+            android:text="@string/btn_to_test_activity_2" />
+    </net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>
+</net.sunniwell.aar.focuscontrol.layout.FocusControlScrollView>

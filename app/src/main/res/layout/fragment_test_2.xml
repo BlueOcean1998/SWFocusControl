@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.sunniwell.aar.focuscontrol.layout.FocusControlScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:scrollbars="none">
+
+    <net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:searchFocusDown="nullSearchFocus"
+        app:searchFocusUp="nullSearchFocus">
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:recordFocusEnabled="false">
+
+            <EditText
+                android:id="@+id/et_1"
+                style="@style/et_normal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="@null"
+                android:hint="@null"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btn_8"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+        </net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:defFocusId="@id/btn_11"
+            app:searchFocusRight="nullSearchFocus">
+
+            <Button
+                android:id="@+id/btn_9"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_10"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <Button
+                android:id="@+id/btn_11"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_12"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:searchFocusRight="nullSearchFocus">
+
+            <Button
+                android:id="@+id/btn_13"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_14"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_15"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout
+            style="@style/normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_16"
+                style="@style/btn_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/btn_17"
+                style="@style/btn_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>
+    </net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>
+</net.sunniwell.aar.focuscontrol.layout.FocusControlScrollView>

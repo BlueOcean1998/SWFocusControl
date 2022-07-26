@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="alpha">#00FFFFFF</color>
+    <color name="half_alpha">#AAFFFFFF</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="gray">#AAA</color>
+    <color name="lightgray">#EEE</color>
+    <color name="lightblue">#BFEFFF</color>
+    <color name="skyblue">#9FCFFF</color>
+    <color name="seablue">#7DADDD</color>
+    <color name="deepblue">#5F7FBF</color>
+    <color name="brightgreen">#40FF40</color>
+    <color name="greyishgreen">#AFCF8F</color>
+    <color name="yellow">#FFDF4F</color>
+    <color name="orange">#FF6F3F</color>
+    <color name="pink">#EF5F7F</color>
+    <color name="purple">#6F5F9F</color>
+    <color name="red">#FF0000</color>
+    <color name="darkred">#DF3F4F</color>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_test_1"
+        android:name="net.sunniwell.app.focuscontrol.fragment.TestFragment1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_test_2"
+        android:name="net.sunniwell.app.focuscontrol.fragment.TestFragment2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+</net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>

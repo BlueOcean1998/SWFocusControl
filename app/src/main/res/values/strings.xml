@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_to_test_activity_1">To Test Activity 1</string>
+    <string name="btn_to_test_activity_1_java">To Test Activity 1 Java</string>
+    <string name="btn_to_test_activity_1_fragment">To Test Activity 1 Fragment</string>
+    <string name="btn_to_test_activity_2">To Test Activity 2</string>
+
+    <string name="btn_1">Button 1</string>
+    <string name="btn_2">Button 2</string>
+    <string name="btn_3">Button 3</string>
+    <string name="btn_4">Button 4</string>
+    <string name="btn_5">Button 5</string>
+    <string name="btn_6">Button 6</string>
+    <string name="btn_7">Button 7</string>
+</resources>
