@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <net.sunniwell.aar.focuscontrol.layout.FocusControlFrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlRecyclerView
+            android:id="@+id/focus_control_rv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:padding="3dp"
+            app:boundaryItemCount="3"
+            app:searchFocusDown="nullSearchFocus"
+            app:searchFocusUp="nullSearchFocus" />
+    </net.sunniwell.aar.focuscontrol.layout.FocusControlFrameLayout>
+
+    <net.sunniwell.aar.focuscontrol.layout.FocusControlFrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlRecyclerView
+            android:id="@+id/focus_control_rv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:padding="3dp"
+            app:boundaryItemCount="3"
+            app:searchFocusDown="nullSearchFocus"
+            app:searchFocusUp="nullSearchFocus" />
+    </net.sunniwell.aar.focuscontrol.layout.FocusControlFrameLayout>
+
+    <net.sunniwell.aar.focuscontrol.layout.FocusControlFrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <net.sunniwell.aar.focuscontrol.layout.FocusControlRecyclerView
+            android:id="@+id/focus_control_rv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:padding="3dp"
+            app:boundaryItemCount="3"
+            app:searchFocusDown="nullSearchFocus"
+            app:searchFocusUp="nullSearchFocus" />
+    </net.sunniwell.aar.focuscontrol.layout.FocusControlFrameLayout>
+</net.sunniwell.aar.focuscontrol.layout.FocusControlLinearLayout>

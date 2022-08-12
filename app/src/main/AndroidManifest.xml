@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.sunniwell.app.focuscontrol">
+
+    <application
+        android:name=".FocusControlApplication"
+        android:icon="@null"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SWFocusControl">
+
+        <activity
+            android:name=".activity.TestActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.TestActivity1"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".activity.TestActivity1Java"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".activity.TestActivity1Fragment"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".activity.TestActivity2"
+            android:screenOrientation="landscape" />
+    </application>
+</manifest>

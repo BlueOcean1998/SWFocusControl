@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- styles -->
+    <style name="FocusControlConstraintLayout">
+        <item name="recordFocusEnabled">false</item>
+    </style>
+
+    <style name="FocusControlFrameLayout">
+        <item name="recordFocusEnabled">false</item>
+    </style>
+
+    <style name="FocusControlLinearLayout">
+        <item name="recordFocusEnabled">true</item>
+    </style>
+
+    <style name="FocusControlRecyclerView">
+        <item name="recordFocusEnabled">true</item>
+        <item name="isBoundaryFocus">false</item>
+        <item name="boundaryItemCount">3</item>
+    </style>
+
+    <style name="FocusControlRelativeLayout">
+        <item name="recordFocusEnabled">false</item>
+    </style>
+
+    <style name="FocusControlScrollView">
+        <item name="recordFocusEnabled">true</item>
+        <item name="isHoldFocusInCenter">true</item>
+    </style>
+</resources>

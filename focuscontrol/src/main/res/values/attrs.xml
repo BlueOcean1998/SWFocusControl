@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 是否记录最后聚焦控件 -->
+    <attr name="recordFocusEnabled" format="boolean" />
+
+    <!-- 默认聚焦控件id -->
+    <attr name="defFocusId" format="reference" />
+
+    <!-- 向左寻焦 -->
+    <attr name="searchFocusLeft" format="reference|integer">
+        <!-- 禁止自动寻焦 -->
+        <flag name="nullSearchFocus" value="-4" />
+        <!-- 系统自动寻焦 -->
+        <flag name="systemSearchFocus" value="-3" />
+        <!-- 默认自动寻焦 -->
+        <flag name="defSearchFocus" value="-2" />
+    </attr>
+    <!-- 向右寻焦 -->
+    <attr name="searchFocusRight" format="reference|integer">
+        <!-- 禁止自动寻焦 -->
+        <flag name="nullSearchFocus" value="-4" />
+        <!-- 系统自动寻焦 -->
+        <flag name="systemSearchFocus" value="-3" />
+        <!-- 默认自动寻焦 -->
+        <flag name="defSearchFocus" value="-2" />
+    </attr>
+    <!-- 向上寻焦 -->
+    <attr name="searchFocusUp" format="reference|integer">
+        <!-- 禁止自动寻焦 -->
+        <flag name="nullSearchFocus" value="-4" />
+        <!-- 系统自动寻焦 -->
+        <flag name="systemSearchFocus" value="-3" />
+        <!-- 默认自动寻焦 -->
+        <flag name="defSearchFocus" value="-2" />
+    </attr>
+    <!-- 向下寻焦 -->
+    <attr name="searchFocusDown" format="reference|integer">
+        <!-- 禁止自动寻焦 -->
+        <flag name="nullSearchFocus" value="-4" />
+        <!-- 系统自动寻焦 -->
+        <flag name="systemSearchFocus" value="-3" />
+        <!-- 默认自动寻焦 -->
+        <flag name="defSearchFocus" value="-2" />
+    </attr>
+
+    <declare-styleable name="FocusControlConstraintLayout">
+        <attr name="recordFocusEnabled" />
+        <attr name="defFocusId" />
+        <attr name="searchFocusLeft" />
+        <attr name="searchFocusRight" />
+        <attr name="searchFocusUp" />
+        <attr name="searchFocusDown" />
+    </declare-styleable>
+
+    <declare-styleable name="FocusControlFrameLayout">
+        <attr name="recordFocusEnabled" />
+        <attr name="defFocusId" />
+        <attr name="searchFocusLeft" />
+        <attr name="searchFocusRight" />
+        <attr name="searchFocusUp" />
+        <attr name="searchFocusDown" />
+    </declare-styleable>
+
+    <declare-styleable name="FocusControlLinearLayout">
+        <attr name="recordFocusEnabled" />
+        <attr name="defFocusId" />
+        <attr name="searchFocusLeft" />
+        <attr name="searchFocusRight" />
+        <attr name="searchFocusUp" />
+        <attr name="searchFocusDown" />
+    </declare-styleable>
+
+    <declare-styleable name="FocusControlRecyclerView">
+        <attr name="recordFocusEnabled" />
+        <attr name="searchFocusLeft" />
+        <attr name="searchFocusRight" />
+        <attr name="searchFocusUp" />
+        <attr name="searchFocusDown" />
+        <!-- 到达边界时是否允许聚焦 -->
+        <attr name="isBoundaryFocus" format="boolean" />
+        <!-- 自动滚动触发的边界item数 -->
+        <attr name="boundaryItemCount" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="FocusControlRelativeLayout">
+        <attr name="recordFocusEnabled" />
+        <attr name="defFocusId" />
+        <attr name="searchFocusLeft" />
+        <attr name="searchFocusRight" />
+        <attr name="searchFocusUp" />
+        <attr name="searchFocusDown" />
+    </declare-styleable>
+
+    <declare-styleable name="FocusControlScrollView">
+        <attr name="recordFocusEnabled" />
+        <attr name="defFocusId" />
+        <attr name="searchFocusLeft" />
+        <attr name="searchFocusRight" />
+        <attr name="searchFocusUp" />
+        <attr name="searchFocusDown" />
+        <!-- 是否保持焦点在中间 -->
+        <attr name="isHoldFocusInCenter" format="boolean" />
+    </declare-styleable>
+</resources>

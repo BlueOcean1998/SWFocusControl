@@ -1,0 +1,3 @@
+rootProject.name = "SWFocusControl"
+include ':app'
+include ':focuscontrol'
