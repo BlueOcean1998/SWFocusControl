@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'maven'
+    id 'maven-publish'
+    id 'signing'
 }
 
 android {
@@ -10,8 +11,8 @@ android {
     defaultConfig {
         minSdk 16
         targetSdk 31
-        versionCode 1
-        versionName "1.0.0"
+        versionCode Integer.valueOf(MAVEN_VERSION_CODE)
+        versionName MAVEN_VERSION_NAME
     }
 
     buildTypes {
@@ -30,7 +31,7 @@ android {
 
     libraryVariants.all {
         it.outputs.all {
-            outputFileName = "focuscontrol-v${defaultConfig.versionName}.aar"
+            outputFileName = "focuscontrol-v${MAVEN_VERSION_NAME}.aar"
         }
     }
 }
@@ -38,4 +39,67 @@ android {
 dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.1.2'
     api 'androidx.recyclerview:recyclerview:1.2.1'
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    //noinspection GroovyAccessibility
+    archiveClassifier = 'sources'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId MAVEN_GROUP_ID //开通maven central时候定义的
+            artifactId MAVEN_ARTIFACT_ID //资源名称
+            version MAVEN_VERSION_NAME //版本名称
+
+            pom {
+                packaging 'aar'
+                name = POM_NAME
+                description = POM_DESCRIPTION
+                url = URL_SOURCE
+                inceptionYear = POM_INCEPTION_YEAR
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'BlueOcean1998'
+                        name = 'yinsongkai'
+                        email = '2872545042@qq.com'
+                        url = 'https://github.com/BlueOcean1998'
+                    }
+                }
+                scm {
+                    connection = "scm:git:${URL_SOURCE}.git"
+                    developerConnection = "scm:git:ssh://${URL_SOURCE}.git"
+                    url = URL_SOURCE
+                }
+            }
+
+            artifact sourceJar
+            artifact "$buildDir/outputs/aar/focuscontrol-v${MAVEN_VERSION_NAME}.aar"
+        }
+    }
+    repositories {
+        maven {
+            name MAVEN_ARTIFACT_ID
+            //指定要上传的maven仓库
+            url = URL_MAVEN
+            //Maven仓库用户名和密码
+            credentials {
+                username MAVEN_USERNAME
+                password MAVEN_PASSWORD
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.maven //签名配置
 }

@@ -1,5 +1,9 @@
 # FocusControl
 焦点控制框架，用于Android TV应用的焦点控制。  
+在模块gradle目录下的dependencies闭包中添加如下代码即可集成焦点控制框架：
+```groovy
+    implementation 'io.github.BlueOcean1998:focuscontrol:1.0.0'
+```
 FocusControl集成了以下仓库：
 ```groovy
     api 'androidx.constraintlayout:constraintlayout:2.1.2'
