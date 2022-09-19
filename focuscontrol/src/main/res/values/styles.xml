@@ -17,6 +17,7 @@
         <item name="recordFocusEnabled">true</item>
         <item name="isBoundaryFocus">false</item>
         <item name="boundaryItemCount">3</item>
+        <item name="isRecycle">false</item>
     </style>
 
     <style name="FocusControlRelativeLayout">

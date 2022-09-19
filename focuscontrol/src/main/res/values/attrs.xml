@@ -80,6 +80,8 @@
         <attr name="isBoundaryFocus" format="boolean" />
         <!-- 自动滚动触发的边界item数 -->
         <attr name="boundaryItemCount" format="integer" />
+        <!-- 是否轮播 -->
+        <attr name="isRecycle" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="FocusControlRelativeLayout">

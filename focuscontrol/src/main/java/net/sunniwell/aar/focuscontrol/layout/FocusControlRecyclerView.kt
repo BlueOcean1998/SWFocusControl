@@ -2,6 +2,7 @@ package net.sunniwell.aar.focuscontrol.layout
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.FocusFinder
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.AttrRes
@@ -59,6 +60,9 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
         get() = max(
             0, min(field, visibleChildCount / spanCount / 2 - 1) * spanCount
         )
+
+    //是否轮播
+    var isRecycle = false
 
     //方向
     inline var orientation
@@ -272,6 +276,9 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
         val boundaryItemCount = typedArray.getInt(
             R.styleable.FocusControlRecyclerView_boundaryItemCount, 0
         )
+        val isRecycle = typedArray.getBoolean(
+            R.styleable.FocusControlRecyclerView_isRecycle, false
+        )
         typedArray.recycle()
 
         this.recordFocusEnabled = recordFocusEnabled
@@ -281,6 +288,7 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
         this.searchFocusDown = searchFocusDown
         this.isBoundaryFocus = isBoundaryFocus
         this.boundaryItemCount = boundaryItemCount
+        this.isRecycle = isRecycle
     }
 
     override fun focusSearch(focused: View?, direction: Int): View? {
@@ -299,7 +307,10 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
         if (recordFocusEnabled) lastFocusView = focused
 
         //焦点控制
-        val systemNextFocus = super.focusSearch(focused, direction)
+        val parent = parent as? ViewGroup
+        val systemNextFocus = if (parent == null)
+            FocusFinder.getInstance().findNextFocus(this, focused, direction)
+        else parent.focusSearch(focused, direction)
         val nextFocus = findNextFocus(systemNextFocus, focused, direction)
 
         logger.d("lastFocusView:$lastFocusView")
@@ -354,7 +365,7 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
     open fun findNextFocus(focused: View?, isBackwards: Boolean): View? {
         logger.d("--- findNextFocus2 start ---")
 
-        logger.d("focused:$focused isForward:$isBackwards")
+        logger.d("focused:$focused isBackwards:$isBackwards")
         focused ?: return null
 
         val itemCount = itemCount
@@ -390,6 +401,38 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
             logger.d("next position:$position")
         }
         logger.d("nextFocus:$nextFocus")
+
+        /*轮播*/
+        logger.d("isRecycle:$isRecycle")
+        if (isRecycle) {
+            if (isBackwards) {
+                /*已聚焦在首个item时，跳到最后一个item*/
+                val firstFocusableChild = firstFocusableChild
+                logger.d("firstFocusableChild:$firstFocusableChild")
+                if (focused == firstFocusableChild) {
+                    scrollToPosition(itemCount - 1)
+                    post {
+                        val lastFocusableChild = lastFocusableChild
+                        logger.d("lastFocusableChild:$lastFocusableChild")
+                        lastFocusableChild?.requestFocus()
+                    }
+                    return null
+                }
+            } else {
+                /*已聚焦在最后一个item时，跳到首个item*/
+                val lastFocusableChild = lastFocusableChild
+                logger.d("lastFocusableChild:$lastFocusableChild")
+                if (focused == lastFocusableChild) {
+                    scrollToPosition(0)
+                    post {
+                        val firstFocusableChild = firstFocusableChild
+                        logger.d("firstFocusableChild:$firstFocusableChild")
+                        firstFocusableChild?.requestFocus()
+                    }
+                    return null
+                }
+            }
+        }
 
         logger.d("--- findNextFocus2 end ---")
 

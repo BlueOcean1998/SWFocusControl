@@ -73,7 +73,7 @@ interface FocusControlViewParent : ViewParent {
         logger.v("findNextFocus1 nextFocusParents:$nextFocusParents")
 
         //外层的焦点控制父控件不能干扰内层的焦点控制父控件
-        if (nextFocusParents == null || this !in nextFocusParents) {
+        if (nextFocusParents == null || this !in nextFocusParents || focused == systemNextFocus) {
             //根据寻焦方向获取searchFocus属性值
             val searchFocus = when (direction) {
                 View.FOCUS_LEFT -> searchFocusLeft
