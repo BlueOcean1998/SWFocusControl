@@ -375,27 +375,45 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
 
         /*向前或向后寻找可聚焦控件*/
         var nextFocus: View? = null
-        val focusedItem = getItemByView(nextFocus)
+        val focusedItem = getItemByView(focused)
         if (focusedItem != null) {
             var position = getChildAdapterPosition(focusedItem)
             logger.d("last position:$position")
             if (isBackwards) {
                 while (position > spanCount - 1) {
                     position -= spanCount
-                    val child = findViewByPosition(position)
-                    if (child?.canBeFocus == true) {
-                        nextFocus = child
-                        break
+                    val nextFocusItem = findViewByPosition(position) ?: continue
+                    nextFocus = when {
+                        nextFocusItem.canBeFocus -> nextFocusItem
+                        nextFocusItem is FocusControlViewParent -> findNextFocus(nextFocusItem)
+                        else -> {
+                            val nextFocusChild: View? = nextFocusItem.findViewById(focused.id)
+                            when {
+                                nextFocusChild?.canBeFocus == true -> nextFocusChild
+                                nextFocusItem is ViewGroup -> nextFocusItem.firstFocusableChild
+                                else -> null
+                            }
+                        }
                     }
+                    if (nextFocus != null) break
                 }
             } else {
                 while (position < itemCount - spanCount) {
                     position += spanCount
-                    val child = findViewByPosition(position)
-                    if (child?.canBeFocus == true) {
-                        nextFocus = child
-                        break
+                    val nextFocusItem = findViewByPosition(position) ?: continue
+                    nextFocus = when {
+                        nextFocusItem.canBeFocus -> nextFocusItem
+                        nextFocusItem is FocusControlViewParent -> findNextFocus(nextFocusItem)
+                        else -> {
+                            val nextFocusChild: View? = nextFocusItem.findViewById(focused.id)
+                            when {
+                                nextFocusChild?.canBeFocus == true -> nextFocusChild
+                                nextFocusItem is ViewGroup -> nextFocusItem.firstFocusableChild
+                                else -> null
+                            }
+                        }
                     }
+                    if (nextFocus != null) break
                 }
             }
             logger.d("next position:$position")
@@ -581,20 +599,21 @@ open class FocusControlRecyclerView @JvmOverloads constructor(
         if (holdFocusPosition > itemCount - 1) holdFocusPosition = itemCount - 1
 
         //寻找保持的焦点位置的可聚焦的控件
-        var child = findViewByPosition(holdFocusPosition)
-        if (child != null) {
-            child = when {
-                child.canBeFocus -> child
-                child is FocusControlViewParent -> child.lastFocusView
+        var nextFocus: View? = null
+        val holdFocusItem = findViewByPosition(holdFocusPosition)
+        if (holdFocusItem != null) {
+            nextFocus = when {
+                holdFocusItem.canBeFocus -> holdFocusItem
+                holdFocusItem is FocusControlViewParent -> findNextFocus(holdFocusItem)
                 else -> null
             }
         }
-        logger.d("child:$child")
-        if (child != null) {
+        logger.d("nextFocus:$nextFocus")
+        if (nextFocus != null) {
             //保持焦点位置
-            if (hasFocus()) child.requestFocus()
+            if (hasFocus()) nextFocus.requestFocus()
             //记录焦点
-            if (recordFocusEnabled) lastFocusView = child
+            if (recordFocusEnabled) lastFocusView = nextFocus
         }
 
         logger.d("--- holdFocus end ---")

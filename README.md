@@ -194,15 +194,19 @@ kotlin语言会自动为它们在接口中生成get set抽象方法，
 FocusControlViewParent默认实现了2个方法：  
 kotlin:
 ```kotlin
-    findNextFocus(
+    fun findNextFocus(
         systemNextFocus: View?, focused: View?, direction: Int
     ): View? {
         ...
     }
-    findNextFocus(
-        systemNextFocus: View?, focused: View?,
-        nextFocusParents: ArrayList<FocusControlViewParent>
+    fun findNextFocus(
+        systemNextFocus: View?,
+        nextFocusParents: ArrayList<FocusControlViewParent>?,
+        focused: View?
     ): View? {
+        ...
+    }
+    fun findNextFocus(nextFocusParent: FocusControlViewParent?): View? {
         ...
     }
 ```
@@ -218,7 +222,6 @@ kotlin:
         if (recordFocusEnabled) lastFocusView = focused
         return findNextFocus(super.focusSearch(focused, direction), focused, direction)
     }
-
     override fun requestChildFocus(child: View?, focused: View?) {
         super.requestChildFocus(child, focused)
         if (recordFocusEnabled) lastFocusView = child

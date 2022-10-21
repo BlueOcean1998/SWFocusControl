@@ -167,13 +167,29 @@ interface FocusControlViewParent : ViewParent {
         logger.v("findNextFocus2 nextFocusParent:$nextFocusParent")
 
         //下一个聚焦控件初始化为需要寻焦的控件
-        var nextFocus = systemNextFocus
+        val nextFocus = findNextFocus(nextFocusParent) ?: systemNextFocus
+        logger.v("findNextFocus2 nextFocus:$nextFocus")
 
+        logger.v("--- findNextFocus2 end ---")
+
+        return nextFocus
+    }
+
+    /**
+     * 寻找下一个聚焦的控件
+     *
+     * @param nextFocusParent 下一个聚焦的控件的焦点控制父控件
+     * @return View?
+     */
+    fun findNextFocus(nextFocusParent: FocusControlViewParent?): View? {
+        logger.v("--- findNextFocus3 start ---")
+        var nextFocus: View? = null
         if (nextFocusParent is ViewGroup) {
             //获取焦点控制父控件的所有可聚焦的子控件
             val focusableChildren = nextFocusParent.focusableChildren
             //获取焦点控制父控件记录的控件
             val nextLastFocusView = nextFocusParent.lastFocusView
+            logger.d("findNextFocus3 nextLastFocusView:$nextLastFocusView")
             /*如果其有记录焦点，且记录的控件在其所有可聚焦的子控件之内
             （有可能首次聚焦没有记录，有可能已无法聚焦，也有可能已被移除但还未销毁）*/
             nextFocus = if (nextFocusParent.recordFocusEnabled
@@ -185,14 +201,17 @@ interface FocusControlViewParent : ViewParent {
                 //否则返回其默认聚焦控件，如果不在其所有可聚焦的子控件之内则返回其首个可聚焦控件
                 val defFocus: View? =
                     nextFocusParent.findViewById(nextFocusParent.defFocusId)
-                if (defFocus in focusableChildren) defFocus
-                else nextFocusParent.firstFocusableChild
+                logger.d("findNextFocus3 defFocus:$defFocus")
+                if (defFocus in focusableChildren) {
+                    defFocus
+                } else {
+                    val firstFocusableChild = nextFocusParent.firstFocusableChild
+                    logger.d("findNextFocus3 firstFocusableChild:$firstFocusableChild")
+                    firstFocusableChild
+                }
             }
         }
-
-        logger.v("findNextFocus2 nextFocus:$nextFocus")
-        logger.v("--- findNextFocus2 end ---")
-
+        logger.v("--- findNextFocus3 end ---")
         return nextFocus
     }
 }
