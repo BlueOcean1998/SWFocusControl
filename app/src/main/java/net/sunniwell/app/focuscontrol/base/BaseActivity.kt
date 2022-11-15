@@ -54,13 +54,13 @@ abstract class BaseActivity<out T : ViewBinding> : FragmentActivity() {
         activities.add(this)
 
         setContentView(viewBinding.root)
-        onViewCreate()
+        onViewCreated()
     }
 
     /**
      * View创建
      */
-    protected open fun onViewCreate() {
+    protected open fun onViewCreated() {
         initControl()
         initObserve()
         initData()

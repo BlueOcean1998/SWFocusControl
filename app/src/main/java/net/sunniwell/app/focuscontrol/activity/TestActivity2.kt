@@ -22,7 +22,7 @@ class TestActivity2 : BaseActivity<ActivityTest2Binding>() {
     override fun bindView() = ActivityTest2Binding.inflate(layoutInflater)
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun onViewCreate() {
+    override fun onViewCreated() {
         val activity = this
         viewBinding.run {
             focusControlRv1.run {
@@ -122,7 +122,7 @@ class TestActivity2 : BaseActivity<ActivityTest2Binding>() {
                 }
             }
         }
-        super.onViewCreate()
+        super.onViewCreated()
     }
 
     private val mStringListPool = ArrayList<String>().apply {
