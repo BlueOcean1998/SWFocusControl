@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList
  */
 abstract class BaseActivity<out T : ViewBinding> : FragmentActivity() {
     companion object {
-        val activities = CopyOnWriteArrayList(ArrayList<BaseActivity<ViewBinding>>())
+        val activities = CopyOnWriteArrayList<BaseActivity<ViewBinding>>()
 
         /**
          * 获取指定活动
